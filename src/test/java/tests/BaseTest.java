@@ -15,13 +15,13 @@ public class BaseTest {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options addArguments("headless");
+        options addArguments ("headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
     public void close() {
-    driver.quit();
+        driver.quit();
     }
 }
