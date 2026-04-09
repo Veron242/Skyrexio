@@ -7,7 +7,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
-
     @Test
     public void checkLogin() {
         driver.get("https://www.saucedemo.com/");
