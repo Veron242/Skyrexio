@@ -1,6 +1,6 @@
 package tests;
 
-import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -9,23 +9,29 @@ import static org.testng.Assert.assertTrue;
 public class LoginTest extends BaseTest {
     @Test
     public void checkLogin() {
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector("[id='user-name']")).sendKeys("standard_user");
-        driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
-        driver.findElement(By.cssSelector("[data-test='login-button']")).click();
-        String title = driver.findElement(By.cssSelector("[data-test='title']")).getText();
-        assertEquals(title, "Products");
+        loginPage.open();
+        loginPage.login("standard_user","secret_sauce");
+
+        assertEquals(productsPage.getTitle(), "Products");
     }
 
-    @Test
-    public void checkIncorrectLogin() {
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector("[id='user-name']")).sendKeys("locked_out_user");
-        driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
-        driver.findElement(By.cssSelector("[data-test='login-button']")).click();
-        boolean isErrorMsgDisplayed = driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed();
-        assertTrue(isErrorMsgDisplayed, "The error message fails to appear");
-        String errorMsg = driver.findElement(By.cssSelector("[data-test='error']")).getText();
-        assertEquals(errorMsg, "Epic sadface: Sorry, this user has been locked out.", "актуальный текст не совпал с ожидаемым");
+    @Test(dataProvider = "incorrectData")
+    public void checkIncorrectLogin(String user, String password,String errorMessage) {
+        loginPage.open();
+        loginPage.login(user, password);
+
+        assertTrue(loginPage.isErrorMsgDisplayed(), "The error message fails to appear");
+        assertEquals(loginPage.getErrorMsg(), errorMessage,
+                "актуальный текст не совпал с ожидаемым");
+    }
+
+    @DataProvider (name = "incorrectData")
+    public Object[][] loginData(){
+        return new Object[][]{
+                {"locked_out_user","secret_sauce","Epic sadface: Sorry, this user has been locked out."},
+                {"","secret_sauce","Epic sadface: Username is required"},
+                {"standard_user","","Epic sadface: Password is required"},
+                {"Standard_user","secret_sauce","Epic sadface: Username and password do not match any user in this service"},
+        };
     }
 }
