@@ -4,9 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage {
-    private final By pageTitle = By.cssSelector("[data-test='title']");
+    public static final String ADD_TO_CART_PATTERN =
+            "//div[text()='%s']" +
+                    "//ancestor::div[@class='inventory_item']" +
+                    "//child::button[text()='Add to cart']";
+
+    private final By pageTitle = By.cssSelector(DATA_TEST_PATTERN.formatted("title"));
     private final By cartLink = By.cssSelector("[data-test='shopping-cart-link']");
-    private final By cartBadge = By.cssSelector("[data-test='shopping_cart_badge']");
+    private final By cartBadge = By.cssSelector("[data-test='shopping-cart-badge']");
     private final By addToCartBtn = By.xpath("//*[text()='Add to cart']");
 
     public ProductsPage(WebDriver driver) {
@@ -19,6 +24,13 @@ public class ProductsPage extends BasePage {
 
     public void addToCart() {
         driver.findElements(addToCartBtn).get(2).click();
+    }
+
+    public void addToCart(final String goodsName) {
+       // By addToCart = By.xpath(String.format(ADD_TO_CART_PATTERN,goodsName);
+        By addToCart = By.xpath(ADD_TO_CART_PATTERN.formatted(goodsName));
+
+        driver.findElement(addToCart).click();
     }
 
     public boolean pageTitleDisplayed() {
