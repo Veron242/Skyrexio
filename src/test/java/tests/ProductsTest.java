@@ -14,7 +14,7 @@ public class ProductsTest extends BaseTest {
                     "Sauce Labs Fleece Jacket");
 
     @Test
-    public void checkGoodsAdded() throws InterruptedException {
+    public void checkGoodsAdded() {
         loginPage.open();
         loginPage.login("standard_user","secret_sauce");
         assertTrue(productsPage.pageTitleDisplayed());
@@ -24,7 +24,6 @@ public class ProductsTest extends BaseTest {
             productsPage.addToCart(goods);
         }
         assertEquals(productsPage.checkCountValue(), "4");
-        Thread.sleep(2000);
         assertEquals(productsPage.checkCountColor(), "rgba(226, 35, 26, 1)");
         productsPage.goToCart();
         assertTrue(productsPage.pageTitleDisplayed());
