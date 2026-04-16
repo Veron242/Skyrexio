@@ -1,14 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class BasePage {
     public static final String BASE_URL = "https://www.saucedemo.com/";
+    public static final String DATA_TEST_PATTERN = "[data-test='%s']";
 
     WebDriver driver;
 
