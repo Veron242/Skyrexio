@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
         driver.get(BasePage.BASE_URL);
     }
 
-    public void open (final String url) {
+    public void open(final String url) {
         driver.get(BasePage.BASE_URL + url);
     }
 

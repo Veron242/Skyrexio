@@ -10,6 +10,7 @@ public class ProductsPage extends BasePage {
                     "//child::button[text()='Add to cart']";
 
     private final By pageTitle = By.cssSelector(DATA_TEST_PATTERN.formatted("title"));
+    private final By addToCartBtn = By.xpath("//*[text()='Add to cart']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -31,17 +32,5 @@ public class ProductsPage extends BasePage {
 
     public boolean pageTitleDisplayed() {
         return driver.findElement(pageTitle).isDisplayed();
-    }
-
-    public String checkCountValue() {
-        return driver.findElement(cartBadge).getText();
-    }
-
-    public String checkCountColor() {
-        return driver.findElement(cartBadge).getCssValue("background-color");
-    }
-
-    public void goToCart() {
-        driver.findElement(cartLink).click();
     }
 }

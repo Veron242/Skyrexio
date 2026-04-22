@@ -11,7 +11,6 @@ public class CartTest extends BaseTest{
         loginPage.open();
         loginPage.login("standard_user","secret_sauce");
         productsPage.addToCart(goodsName);
-        productsPage.goToCart();
         productsPage.navigationPanel.goToCart();
 
         assertFalse(cartPage.getProductsNames().isEmpty());

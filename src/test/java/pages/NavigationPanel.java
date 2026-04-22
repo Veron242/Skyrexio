@@ -10,7 +10,6 @@ public class NavigationPanel {
 
     private final By cartLink = By.cssSelector(DATA_TEST_PATTERN.formatted("shopping-cart-link"));
     private final By cartBadge = By.cssSelector(DATA_TEST_PATTERN.formatted("shopping-cart-badge"));
-    private final By addToCartBtn = By.xpath("//*[text()='Add to cart']");
 
     public NavigationPanel(WebDriver driver) {
         this.driver = driver;

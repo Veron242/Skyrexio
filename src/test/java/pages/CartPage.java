@@ -10,13 +10,14 @@ import java.util.List;
 
 public class CartPage extends BasePage {
     private final By product = By.cssSelector(".inventory_item_name");
+    private final By continueShoppingBtn = By.id("continue-shopping");
 
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
     public ArrayList<String> getProductsNames() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("continue-shopping")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(continueShoppingBtn));
         List<WebElement> allProducts = driver.findElements(product);
         ArrayList<String> names = new ArrayList<>();
 
