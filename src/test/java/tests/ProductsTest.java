@@ -23,9 +23,9 @@ public class ProductsTest extends BaseTest {
         for (String goods : goodsList) {
             productsPage.addToCart(goods);
         }
-        assertEquals(productsPage.checkCountValue(), "4");
-        assertEquals(productsPage.checkCountColor(), "rgba(226, 35, 26, 1)");
-        productsPage.goToCart();
+        assertEquals(productsPage.navigationPanel.checkCountValue(), "4");
+        assertEquals(productsPage.navigationPanel.checkCountColor(), "rgba(226, 35, 26, 1)");
+        productsPage.navigationPanel.goToCart();
         assertTrue(productsPage.pageTitleDisplayed());
         assertEquals(productsPage.getTitle(), "Your Cart");
     }
