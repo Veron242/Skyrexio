@@ -32,6 +32,10 @@ public class ProductsPage extends BasePage {
         driver.findElement(addToCart).click();
     }
 
+    public int getGoodsQuantity() {
+        return driver.findElements(addToCartBtn).size();
+    }
+
     public boolean pageTitleDisplayed() {
         return driver.findElement(pageTitle).isDisplayed();
     }
