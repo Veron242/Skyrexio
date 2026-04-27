@@ -12,7 +12,7 @@ public class CartTest extends BaseTest{
         loginPage.open();
         loginPage.login(withAdminPermission());
         productsPage.addToCart(goodsName);
-        productsPage.goToCart();
+        productsPage.navigationPanel.goToCart();
 
         assertFalse(cartPage.getProductsNames().isEmpty());
         assertEquals(cartPage.getProductsNames().size(),1);
