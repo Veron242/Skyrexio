@@ -24,7 +24,7 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod
     public void setup(@Optional("chrome") String browser) {
-        if (browser.equalsIgnoreCase("chrome")){
+        if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
             options.addArguments("headless");
@@ -34,7 +34,6 @@ public class BaseTest {
         } else if (browser.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-            
         }
 
         loginPage = new LoginPage(driver);
