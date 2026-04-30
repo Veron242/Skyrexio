@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
         return new Object[][]{
                 {withLockedPermission(),"Epic sadface: Sorry, this user has been locked out."},
                 {withEmptyLogin(),"Epic sadface: Username is required"},
-                {withEmptyPassword(),"","Epic sadface: Password is required"},
+                {withEmptyPassword(),"Epic sadface: Password is required"},
                 {withIncorrectPermission(),"Epic sadface: Username and password do not match any user in this service"},
         };
     }

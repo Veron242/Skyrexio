@@ -15,21 +15,17 @@ public class UserFactory {
                 PropertyReader.getProperty("skyrexio.password"));
     }
 
-    public static User withIncorrectPermission () {
-            return new User(
-                    PropertyReader.getProperty("skyrexio.incorrect_user"),
-                    PropertyReader.getProperty(""));
-    }
-
-    public static User withEmptyLogin () {
+    public static User withIncorrectPermission() {
         return new User(
-                PropertyReader.getProperty(""),
+                PropertyReader.getProperty("skyrexio.incorrect_user"),
                 PropertyReader.getProperty("skyrexio.password"));
     }
 
-    public static User withEmptyPassword () {
-        return new User(
-                PropertyReader.getProperty("skyrexio.user"),
-                PropertyReader.getProperty(""));
+    public static User withEmptyLogin() {
+        return new User("", PropertyReader.getProperty("skyrexio.password"));
+    }
+
+    public static User withEmptyPassword() {
+        return new User(PropertyReader.getProperty("skyrexio.user"), "");
     }
 }
