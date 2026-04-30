@@ -14,8 +14,8 @@ public class CheckoutTest extends BaseTest {
             "Sauce Labs Fleece Jacket"
     );
     private static final String FIRST_NAME = "Veronika";
-    private static final String LAST_NAME  = "Konstantinova";
-    private static final String POSTAL     = "180000";
+    private static final String LAST_NAME = "Konstantinova";
+    private static final String POSTAL = "180000";
 
     @Test
     public void checkSuccessfulCheckout() {
