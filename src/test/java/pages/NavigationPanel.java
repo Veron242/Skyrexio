@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,14 +16,17 @@ public class NavigationPanel {
         this.driver = driver;
     }
 
+    @Step("Получить количество товаров в корзине")
     public String checkCountValue() {
         return driver.findElement(cartBadge).getText();
     }
 
+    @Step("Получить цвет иконки корзины")
     public String checkCountColor() {
         return driver.findElement(cartBadge).getCssValue("background-color");
     }
 
+    @Step("Перейти в корзину")
     public void goToCart() {
         driver.findElement(cartLink).click();
     }

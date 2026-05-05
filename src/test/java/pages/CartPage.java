@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,10 +18,7 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    public void proceedToCheckout() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
-    }
-
+    @Step("Получить названия товаров в корзине")
     public ArrayList<String> getProductsNames() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(continueShoppingBtn));
         List<WebElement> allProducts = driver.findElements(product);
@@ -30,5 +28,10 @@ public class CartPage extends BasePage {
             names.add(product.getText());
         }
         return names;
+    }
+
+    @Step("Перейти к оформлению заказа")
+    public void proceedToCheckout() {
+        wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
     }
 }
